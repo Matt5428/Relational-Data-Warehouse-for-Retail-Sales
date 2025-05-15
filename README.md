@@ -17,13 +17,13 @@ under API you can find Create new token</pre>
 
 ### Download dataset by shell script file:
 kaggle_download.sh:
-<pre>#!/bin/bash
-# 3. Set up Kaggle API credentials
-mkdir ~/.kaggle 
+<pre>#!/bin/bash</pre>
+3. Set up Kaggle API credentials
+<pre>mkdir ~/.kaggle 
 mv /path/to/kaggle.json ~/.kaggle/
-chmod 600 ~/.kaggle/kaggle.json
-# 4. download the dataset
-kaggle datasets download -d apoorvaappz/global-super-store-dataset
+chmod 600 ~/.kaggle/kaggle.json</pre>
+4. download and unzip the dataset 
+<pre>kaggle datasets download -d apoorvaappz/global-super-store-dataset
 # I only want to extract the csv file right there
 unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
 
