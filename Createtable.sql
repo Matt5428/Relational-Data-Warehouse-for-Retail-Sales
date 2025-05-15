@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS retail_dw.factorder (
     product_id INT NOT NULL,
     order_priority_id INT NOT NULL,
     order_date DATE NOT NULL,
-    sales 
+    sales DECIMAL(10, 2) NOT NULL,
     quantity INT NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (order_id),
