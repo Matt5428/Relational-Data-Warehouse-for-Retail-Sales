@@ -28,7 +28,7 @@ chmod 600 ~/.kaggle/kaggle.json</pre>
 unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
 
 ## Objectives
-- Design a normalized star schema database
+- Design a normalized star schema
 - Design a ETL pipeline by Python
 - Load Data into SQL
 - Analyze the data by writing SQL queries
