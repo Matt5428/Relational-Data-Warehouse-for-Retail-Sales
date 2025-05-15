@@ -32,4 +32,61 @@ unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
 - Design a ETL pipeline by Python
 - Load Data into SQL
 - Analyze the data by writing SQL queries
-- Build a simple BI dashboard
+- Build a simple BI dashboard (Maybe)
+
+## Tools
+PostgreSQL: To create RDBMS, Data modeling and analysis by queries
+Python: ETL script (Pandas,SQL)
+Pandas: Data cleaning and transformation
+Tableau / Power BI / Metabase: Create Dashboards for my data
+
+## Database(retail_dw) design:
+I decided to design a star schema based on the dataset:
+
+### Fact table: factorder
+- order_id (primary key)
+- order_date_id (FK to dim_date)
+- ship_date_id (FK to dim_date)
+- ship_mode_id (FK to dim_ship_mode)
+- customer_id (FK to dim_customer)
+- product_id (FK to dim_product)
+- order_priority_id (FK to dim_order_priority)
+-  Sales
+- Quantity
+- Discount
+- Profit
+- Shipping Cost
+
+### Dimension Tables:
+
+1. dim_date (including order_date,ship_date):
+- date_id (pk)
+- full_date
+- day
+- month
+- quarter
+- year
+
+2. dim_ship_mode
+- ship_mode_id
+- ship_mode
+
+3. dim_cusomter
+- cusomter_id (PK)
+- customer_name
+- segment
+- city
+- state
+- country
+- postal_code
+- region
+
+4. dim_product
+- product_id(pk)
+- category
+- sub_category
+- product_name
+
+5. dim_order_priority
+- order_priority_id(pk)
+- order_priority
