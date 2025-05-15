@@ -11,9 +11,9 @@ To download this data, I do the following steps:
 1. Install kaggle package
 <pre>pip install kaggle</pre>
 
-2. Create new token on [kaggle.com](kaggle.com)
-<pre>Your profile -> setting 
-under API you can find Create new token</pre>
+2. Generate [Kaggle](kaggle.com) API Token
+<pre>Go to your profile → Settings
+Under "API", click "Create New Token" to download kaggle.json</pre>
 
 ### Download dataset by shell script file:
 kaggle_download.sh:
@@ -22,7 +22,7 @@ kaggle_download.sh:
 <pre>mkdir ~/.kaggle 
 mv /path/to/kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json</pre>
-4. download and unzip the dataset 
+4. Download and Extract Only the CSV File
 <pre>kaggle datasets download -d apoorvaappz/global-super-store-dataset
 # I only want to extract the csv file right there
 unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
