@@ -1,11 +1,7 @@
 # Relational Data Warehouse for Retail Sales
 ## Overview
-This project builds a relationlational data warehouse to simulates a real-world retail analytics pipeline with data modeling, ETL, and SQL.
+This project builds a Relational data warehouse to simulates a real-world retail analytics pipeline with data modeling, ETL, and SQL.
 
-## Pre-requisition
-You have to install the following package:
-1. Pandas
-2. sql
 
 ## Dataset used
 I analyze the data by using the following dataset:
@@ -28,4 +24,12 @@ mv /path/to/kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
 # 4. download the dataset
 kaggle datasets download -d apoorvaappz/global-super-store-dataset
-unzip global-super-store-dataset.zip -d data/</pre>
+# I only want to extract the csv file right there
+unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
+
+## Objectives
+- Design a normalized star schema database
+- Design a ETL pipeline by Python
+- Load Data into SQL
+- Analyze the data by writing SQL queries
+- Build a simple BI dashboard
