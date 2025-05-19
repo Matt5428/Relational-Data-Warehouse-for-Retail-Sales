@@ -1,93 +1,120 @@
 # Relational Data Warehouse for Retail Sales
+
 ## Overview
-This project builds a Relational data warehouse to simulates a real-world retail analytics pipeline with data modeling, ETL, and SQL.
+This project implements a robust relational data warehouse designed to simulate a real-world retail analytics pipeline. It covers the end-to-end process of data modeling, ETL (Extract, Transform, Load), data warehousing, and analytical querying. The objective is to provide a scalable framework for retail sales data analysis, reporting, and business intelligence.
 
+## Dataset
 
-## Dataset used
-I analyze the data by using the following dataset:
-[Global Super Store Dataset(Kaggle)](https://www.kaggle.com/datasets/apoorvaappz/global-super-store-dataset)
+- **Source:** [Global Super Store Dataset (Kaggle)](https://www.kaggle.com/datasets/apoorvaappz/global-super-store-dataset)
 
-To download this data, I do the following steps:
-1. Install kaggle package
-<pre>pip install kaggle</pre>
+To download and use the dataset:
 
-2. Generate [Kaggle](kaggle.com) API Token
-<pre>Go to your profile → Settings
-Under "API", click "Create New Token" to download kaggle.json</pre>
+1. **Install Kaggle CLI:**
+   ```bash
+   pip install kaggle
+   ```
+2. **Generate Kaggle API Token:**
+   - Go to your Kaggle profile → Settings
+   - Under "API," click "Create New Token" to download `kaggle.json`
 
-### Download dataset by shell script file:
-kaggle_download.sh:
-<pre>#!/bin/bash</pre>
-3. Set up Kaggle API credentials
-<pre>mkdir ~/.kaggle 
-mv /path/to/kaggle.json ~/.kaggle/
-chmod 600 ~/.kaggle/kaggle.json</pre>
-4. Download and Extract Only the CSV File
-<pre>kaggle datasets download -d apoorvaappz/global-super-store-dataset
-# I only want to extract the csv file right there
-unzip global-super-store-dataset.zip '*.csv' -d data/</pre>
+3. **Set up Kaggle API credentials:**
+   ```bash
+   mkdir ~/.kaggle
+   mv /path/to/kaggle.json ~/.kaggle/
+   chmod 600 ~/.kaggle/kaggle.json
+   ```
 
-## Objectives
-- Design a normalized star schema
-- Design a ETL pipeline by Python
-- Load Data into SQL
-- Analyze the data by writing SQL queries
-- Build a simple BI dashboard (Maybe)
+4. **Download and extract the CSV file:**
+   ```bash
+   kaggle datasets download -d apoorvaappz/global-super-store-dataset
+   unzip global-super-store-dataset.zip '*.csv' -d data/
+   ```
 
-## Tools
-PostgreSQL: To create RDBMS, Data modeling and analysis by queries
-Python: ETL script (Pandas,SQL)
-Pandas: Data cleaning and transformation
-Tableau / Power BI / Metabase: Create Dashboards for my data
+## Project Objectives
 
-## Database(retail_dw) design:
-I decided to design a star schema based on the dataset:
+- Design a normalized star schema for retail analytics
+- Implement an ETL pipeline in Python
+- Load cleansed data into a PostgreSQL database
+- Perform data analysis using SQL queries
+- (Optional) Build a simple BI dashboard for analytics
 
-### Fact table: factorder
-- order_id (primary key)
-- order_date_id (FK to dim_date)
-- ship_date_id (FK to dim_date)
-- ship_mode_id (FK to dim_ship_mode)
-- customer_id (FK to dim_customer)
-- product_id (FK to dim_product)
-- order_priority_id (FK to dim_order_priority)
--  Sales
-- Quantity
-- Discount
-- Profit
-- Shipping Cost
+## Tools & Technologies
 
-### Dimension Tables:
+- **PostgreSQL:** Relational database modeling and analytics
+- **Python (Pandas, SQLAlchemy):** ETL scripting, data transformation
+- **Pandas:** Data cleaning and manipulation
+- **Tableau / Power BI / Metabase:** Dashboard and data visualization
 
-1. dimdate (including order_date,ship_date):
-- date_id (pk)
-- full_date
-- day
-- month
-- quarter
-- year
+## Data Warehouse Schema
 
-2. dimshipmode
-- ship_mode_id
-- ship_mode
+### Fact Table: `fact_order`
+- `order_id` (Primary Key)
+- `order_date_id` (FK to `dim_date`)
+- `ship_date_id` (FK to `dim_date`)
+- `ship_mode_id` (FK to `dim_ship_mode`)
+- `customer_id` (FK to `dim_customer`)
+- `product_id` (FK to `dim_product`)
+- `order_priority_id` (FK to `dim_order_priority`)
+- `sales`
+- `quantity`
+- `discount`
+- `profit`
+- `shipping_cost`
 
-3. dimcustomer
-- customer_id (PK)
-- customer_name
-- segment
-- city
-- state
-- country
-- postal_code
-- region
+### Dimension Tables
 
-4. dimproduct
-- product_id(pk)
-- category
-- sub_category
-- product_name
+1. **`dim_date`** (includes order and ship dates)
+   - `date_id` (PK)
+   - `full_date`
+   - `day`
+   - `month`
+   - `quarter`
+   - `year`
 
-5. dimorderpriority
-- order_priority_id(pk)
-- order_priority
+2. **`dim_ship_mode`**
+   - `ship_mode_id` (PK)
+   - `ship_mode`
 
+3. **`dim_customer`**
+   - `customer_id` (PK)
+   - `customer_name`
+   - `segment`
+   - `city`
+   - `state`
+   - `country`
+   - `postal_code`
+   - `region`
+
+4. **`dim_product`**
+   - `product_id` (PK)
+   - `category`
+   - `sub_category`
+   - `product_name`
+
+5. **`dim_order_priority`**
+   - `order_priority_id` (PK)
+   - `order_priority`
+
+## Getting Started
+
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/Matt5428/Relational-Data-Warehouse-for-Retail-Sales.git
+   cd Relational-Data-Warehouse-for-Retail-Sales
+   ```
+
+2. **Set up your Python environment and dependencies.**
+
+3. **Download the dataset (see above).**
+
+4. **Run the ETL pipeline scripts to load data into PostgreSQL.**
+
+5. **Query the data warehouse for analytics or connect your BI tool for visualization.**
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+*Feel free to open issues or submit pull requests if you have ideas or improvements!*
