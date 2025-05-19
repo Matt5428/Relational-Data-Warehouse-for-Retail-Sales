@@ -110,11 +110,3 @@ To download and use the dataset:
 4. **Run the ETL pipeline scripts to load data into PostgreSQL.**
 
 5. **Query the data warehouse for analytics or connect your BI tool for visualization.**
-
-## License
-
-[MIT](LICENSE)
-
----
-
-*Feel free to open issues or submit pull requests if you have ideas or improvements!*
