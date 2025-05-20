@@ -110,3 +110,38 @@ To download and use the dataset:
 4. **Run the ETL pipeline scripts to load data into PostgreSQL.**
 
 5. **Query the data warehouse for analytics or connect your BI tool for visualization.**
+
+## SQL Analytics & Insights
+
+This project includes a suite of advanced SQL queries designed to extract meaningful insights from retail sales data. The key analyses provided in [`sql_script/sql_queries.sql`](sql_script/sql_queries.sql) include:
+
+### 1. Top Countries by Sales and Profit
+- **Top 100 Countries by Sales:**  
+  Identifies the 100 countries with the highest total sales, enabling targeted market analysis and strategic planning.
+- **Top 100 Countries by Profit:**  
+  Ranks countries based on total profit to help prioritize high-performing regions.
+
+### 2. Discount Impact Analysis
+- **Sales and Profit by Discount Level:**  
+  Aggregates order counts, total sales, and profit, as well as average sales and profit per order, grouped by discount level. This analysis reveals how discounting strategies affect revenue and profitability.
+- **Correlation between Discount and Profit:**  
+  Computes the statistical correlation between the discount applied and the resulting profit, highlighting the overall relationship and potential trade-offs in discounting.
+
+### 3. Discount Bucket Analysis (with CTEs)
+- **Bucketed Discount Analysis:**  
+  Orders are grouped into meaningful discount ranges (e.g., No Discount, 0-10%, 11-20%, etc.) using Common Table Expressions (CTEs). For each bucket, the script computes:
+  - Number of orders
+  - Total sales
+  - Total profit
+  - Average profit per order
+  - Average sales per order  
+  This helps stakeholders evaluate the business impact of different discount strategies at a granular level.
+
+---
+
+**Usage:**  
+To run these queries, connect to your data warehouse and execute the statements in [`sql_script/sql_queries.sql`](sql_script/sql_queries.sql). Each query is documented in the SQL file for easy reference and modification.
+
+---
+
+*Explore these insights to drive better business decisions and optimize retail performance!*
