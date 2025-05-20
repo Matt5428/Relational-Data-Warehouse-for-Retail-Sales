@@ -36,14 +36,12 @@ To download and use the dataset:
 - Implement an ETL pipeline in Python
 - Load cleansed data into a PostgreSQL database
 - Perform data analysis using SQL queries
-- (Optional) Build a simple BI dashboard for analytics
 
 ## Tools & Technologies
 
 - **PostgreSQL:** Relational database modeling and analytics
 - **Python (Pandas, SQLAlchemy):** ETL scripting, data transformation
 - **Pandas:** Data cleaning and manipulation
-- **Tableau / Power BI / Metabase:** Dashboard and data visualization
 
 ## Data Warehouse Schema
 
@@ -109,8 +107,6 @@ To download and use the dataset:
 
 4. **Run the ETL pipeline scripts to load data into PostgreSQL.**
 
-5. **Query the data warehouse for analytics or connect your BI tool for visualization.**
-
 ## SQL Analytics & Insights
 
 This project includes a suite of advanced SQL queries designed to extract meaningful insights from retail sales data. The key analyses provided in [`sql_script/sql_queries.sql`](sql_script/sql_queries.sql) include:
@@ -137,11 +133,46 @@ This project includes a suite of advanced SQL queries designed to extract meanin
   - Average sales per order  
   This helps stakeholders evaluate the business impact of different discount strategies at a granular level.
 
----
-
 **Usage:**  
 To run these queries, connect to your data warehouse and execute the statements in [`sql_script/sql_queries.sql`](sql_script/sql_queries.sql). Each query is documented in the SQL file for easy reference and modification.
 
+## Key Analytical Results
+
+### 1. Top Countries by Sales and Profit
+
+- **Top Country by Sales:** United States ($1,912,794.40)
+- **Top Country by Profit:** United States ($225,862.81)
+
+Other high-performing countries include Australia, France, India, and China.  
+See [`analysis/country_sales.csv`](analysis/country_sales.csv) and [`analysis/country_profit.csv`](analysis/country_profit.csv) for the full rankings.
+
 ---
 
-*Explore these insights to drive better business decisions and optimize retail performance!*
+### 2. Discount Impact Analysis
+
+- **Correlation between Discount and Profit:**  
+  The correlation coefficient between discount and profit is **-0.37** (see [`analysis/correlation.csv`](analysis/correlation.csv)), indicating that higher discounts are generally associated with lower profits.
+
+---
+
+### 3. Discount Bucket Sales Summary
+
+The [`analysis/discount_bucket.csv`](analysis/discount_bucket.csv) file summarizes sales and profit by discount bucket:
+
+| Discount Bucket | Num Orders | Total Sales   | Total Profit  | Avg Profit/Order | Avg Sales/Order |
+|-----------------|------------|--------------|--------------|------------------|-----------------|
+| No Discount     | 13,697     | $5,158,578   | $1,307,538   | $95.46           | $376.62         |
+| 0-10%           | 453        | $316,679     | $65,644      | $144.91          | $699.07         |
+| 11-20%          | 2,762      | $1,610,175   | $241,512     | $87.44           | $582.97         |
+| 21-30%          | 3,030      | $1,086,389   | $87,428      | $28.85           | $358.54         |
+| 31-40%          | 401        | $272,278     | -$33,488     | -$83.51          | $678.99         |
+| 41-50%          | 2,767      | $749,118     | -$265,779    | -$96.05          | $270.73         |
+| 51-70%          | 1,793      | $266,071     | -$280,603    | -$156.50         | $148.39         |
+| Above 70%       | 132        | $17,075      | -$32,325     | -$244.89         | $129.36         |
+
+**Insights:**
+- Orders with no discount have the highest total sales and profit.
+- Higher discount buckets (above 40%) often result in negative average profit per order, indicating losses.
+- Moderate discounts (0-20%) still yield positive profits.
+
+See [`analysis/discount_bucket.csv`](analysis/discount_bucket.csv) for the full breakdown.
